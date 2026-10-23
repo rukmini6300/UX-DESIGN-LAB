@@ -1,0 +1,527 @@
+/* =========================================================================
+   NAVBAR STYLE
+   Navbar colors and variants, nested items, navbar settings and the design
+   lab icon rail.
+   ========================================================================= */
+
+/* ============ NAVBAR STYLE ============
+   Independent of the brand color and the design language. Variables are set by KagamiLab (--nv-*).
+   With nothing customised they fall back to the app theme, so the default navbar is unchanged. */
+:root {
+  --nv-bg: var(--surface);
+  --nv-text: var(--text-muted);
+  --nv-hover: var(--surface-hover);
+  --nv-hover-text: var(--text);
+  --nv-active: var(--primary-soft);
+  --nv-active-text: var(--primary-text);
+  --nv-border: var(--border);
+  --nv-card: var(--surface-sunken);
+  --nv-sub-bg: transparent;
+  --nv-sub-text: var(--nv-text);
+  --nv-sub-hover: var(--nv-hover);
+  --nv-sub-hover-text: var(--nv-hover-text);
+  --nv-sub-active: transparent;
+  --nv-sub-active-text: var(--nv-active-text);
+  --nv-sub-line: var(--nv-border);
+  --nv-sub-bar: var(--primary-grad);
+  --nv-icon: var(--text-subtle);
+  --nv-icon-h: var(--text-muted);
+  --nv-icon-a: var(--primary-text);
+  --nv-font: inherit;
+  --nv-fs: calc(var(--ui-fs) - 0.5px);
+}
+.sidebar {
+  background: var(--nv-bg);
+  border-color: var(--nv-border);
+  font-family: var(--nv-font);
+}
+.nav-item,
+.hn-item {
+  color: var(--nv-text);
+  font-family: var(--nv-font);
+  font-size: var(--nv-fs);
+}
+.nav-item:is(:hover, .is-hover),
+.hn-item:is(:hover, .is-hover),
+.hn-item[aria-expanded='true'] {
+  background: var(--nv-hover);
+  color: var(--nv-hover-text);
+}
+.nav-item.active,
+.hn-item.active {
+  background: var(--nv-active);
+  color: var(--nv-active-text);
+}
+.nav-item .i,
+.hn-item .i {
+  color: var(--nv-icon);
+}
+.nav-item:is(:hover, .is-hover) .i,
+.hn-item:is(:hover, .is-hover) .i {
+  color: var(--nv-icon-h);
+}
+.nav-item.active .i,
+.hn-item.active .i,
+.nav-group.has-active > .nav-item .i,
+.nav-section.in-section > .nav-section-head .i {
+  color: var(--nv-icon-a);
+}
+.nav-group.has-active > .nav-item,
+.nav-section-head {
+  color: var(--nv-hover-text);
+}
+.nav-section.in-section {
+  background: var(--nv-card);
+  box-shadow: inset 0 0 0 1px var(--nv-border);
+}
+.nav-section.in-section > .nav-section-head {
+  color: var(--nv-active-text);
+}
+.nav-sep,
+.hn-sep {
+  background: var(--nv-border);
+}
+.nav-caret,
+.hn-caret {
+  color: var(--nv-text);
+}
+.hn-tag {
+  color: var(--nv-text);
+}
+.sb-card {
+  border-color: var(--nv-border);
+  color: var(--nv-text);
+}
+.sb-card b {
+  color: var(--nv-hover-text);
+}
+.sidebar .sb-card .link {
+  color: var(--nv-active-text);
+}
+
+/* nested items */
+.nav-sub {
+  border-left-color: var(--nv-sub-line);
+  background: var(--nv-sub-bg);
+}
+.nav-sub .nav-item {
+  color: var(--nv-sub-text);
+  font-size: calc(var(--nv-fs) - 0.5px);
+}
+.nav-sub .nav-item:is(:hover, .is-hover) {
+  background: var(--nv-sub-hover);
+  color: var(--nv-sub-hover-text);
+}
+.nav-sub .nav-item.active {
+  background: var(--nv-sub-active);
+  color: var(--nv-sub-active-text);
+}
+.nav-sub .nav-item.active::before {
+  background: var(--nv-sub-bar);
+}
+/* nested hover variants */
+html[data-navsub='fill'] .nav-sub .nav-item:is(:hover, .is-hover) {
+  background: var(--nv-active);
+  color: var(--nv-active-text);
+}
+html[data-navsub='bar'] .nav-sub .nav-item:is(:hover, .is-hover) {
+  background: transparent;
+  box-shadow: inset 2px 0 0 var(--nv-sub-hover-text);
+  border-radius: 0 var(--r) var(--r) 0;
+}
+html[data-navsub='underline'] .nav-sub .nav-item:is(:hover, .is-hover) {
+  background: transparent;
+  box-shadow: inset 0 -1px 0 var(--nv-sub-hover-text);
+  border-radius: 0;
+}
+html[data-navsub='indent'] .nav-sub .nav-item:is(:hover, .is-hover) {
+  transform: translateX(3px);
+}
+
+/* Settings: navbar controls */
+.nv-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 28px;
+}
+.nv-g h5 {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.nv-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  font-size: 13px;
+}
+.nv-row > span {
+  flex: 1;
+  min-width: 0;
+}
+.nv-row input[type='color'] {
+  width: 40px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nv-row .nv-auto {
+  font-size: 12px;
+  color: var(--text-subtle);
+  min-width: 34px;
+  text-align: right;
+}
+.nv-row .btn {
+  flex-shrink: 0;
+}
+.nv-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nv-range input[type='range'] {
+  flex: 1;
+  accent-color: var(--primary);
+}
+.nv-range output {
+  min-width: 48px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+.nv-presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.nv-pre {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  text-align: left;
+  min-width: 0;
+}
+.nv-pre:hover {
+  border-color: var(--text-subtle);
+}
+.nv-pre[aria-pressed='true'] {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+.nv-pre i {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: var(--r);
+  font-style: normal;
+  font-size: 11px;
+}
+.nv-pre i b {
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.nv-pre b.t {
+  font-size: 13px;
+  font-weight: 600;
+}
+.nv-pre small {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.nvprev {
+  margin-top: 14px;
+  width: 260px;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid var(--nv-border);
+  border-radius: var(--r-md);
+  background: var(--nv-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--nv-font);
+}
+.nvprev .nav-item {
+  cursor: default;
+}
+.nvprev .nav-sub {
+  margin-left: 19px;
+}
+.nvprev .nav-sub .nav-item {
+  padding-left: 10px;
+}
+@media (max-width: 900px) {
+  .nv-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nv-presets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.in-dock .nv-groups {
+  grid-template-columns: minmax(0, 1fr);
+}
+.in-dock .nv-presets {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* simple navbar settings page */
+.nvs-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 32px;
+  align-items: start;
+}
+.nvs-side {
+  position: sticky;
+  top: 8px;
+}
+.nvs-side h4 {
+  font-size: 14px;
+  font-weight: 650;
+}
+.nvs-note {
+  font-size: 12.5px;
+  color: var(--text-subtle);
+  margin-top: 10px;
+}
+.nvs-side .nvprev {
+  width: 100%;
+}
+.nv-adv summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nv-adv summary::before {
+  content: '+';
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface-secondary);
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.nv-adv[open] summary::before {
+  content: '\2212';
+}
+.nv-adv summary::-webkit-details-marker {
+  display: none;
+}
+.nv-adv-body {
+  padding-top: 12px;
+}
+@media (max-width: 1000px) {
+  .nvs-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nvs-side {
+    position: static;
+    order: -1;
+  }
+}
+
+/* Design lab sidebar: icon rail and icon tiles */
+.lab-dock {
+  width: 420px;
+}
+html[data-labdock='open'] body {
+  padding-right: 420px;
+}
+@media (max-width: 1100px) {
+  html[data-labdock='open'] body {
+    padding-right: 0;
+  }
+  .lab-dock {
+    width: min(420px, 100%);
+  }
+}
+.lab-dock-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.lab-wrap.in-dock {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+}
+.in-dock .lab-top {
+  margin: 0;
+  border-radius: 0;
+  border-width: 0 0 1px;
+  padding: 8px 12px;
+  background: var(--surface);
+}
+.in-dock .lab-sum {
+  display: none;
+}
+.in-dock .lab-top .lab-acts {
+  margin-left: auto;
+}
+.ld-wrap {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+.ld-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 6px;
+  border-right: 1px solid var(--border);
+  background: var(--surface-sunken);
+  overflow-y: auto;
+}
+.ld-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 2px 7px;
+  border-radius: var(--r-md);
+  color: var(--text-muted);
+  text-align: center;
+}
+.ld-tab:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.ld-tab[aria-selected='true'] {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+.ld-ti {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+.ld-ti .oi-t {
+  font-weight: 700;
+  line-height: 1;
+}
+.ld-tl {
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.ld-pane {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 14px 14px 24px;
+}
+.ld-sheet[hidden] {
+  display: none;
+}
+.ld-ph {
+  font-size: 16px;
+  font-weight: 650;
+  margin-bottom: 12px;
+}
+.in-dock .lab-sec {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.in-dock .lab-sec > p:not(.lab-sub):not(.lab-note) {
+  display: none;
+}
+.in-dock .lab-sec h4 {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.in-dock .lab-grid {
+  grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+  gap: 8px;
+}
+.in-dock .lab-grid.c3,
+.in-dock .lab-grid.c4,
+.in-dock .lab-grid.c5,
+.in-dock .lab-grid.c2 {
+  grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+}
+.in-dock .lab-grid.c3:has(.lab-lang) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.in-dock .lab-grid:has(.lab-lang) .lab-lang .ll-desc {
+  display: none;
+}
+.in-dock .lab-opt {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  padding: 10px 6px;
+  min-height: 76px;
+}
+.in-dock .lab-opt small {
+  display: none;
+}
+.in-dock .lab-opt b {
+  font-size: 12px;
+  line-height: 1.2;
+}
+.ld-ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  color: var(--text-muted);
+}
+.ld-ico .oi-t {
+  font-weight: 700;
+  line-height: 1;
+}
+.in-dock .lab-opt[aria-pressed='true'] .ld-ico {
+  color: var(--primary-text);
+}
+.in-dock .lab-opt .fnt {
+  font-size: 22px;
+  margin: 0;
+}
+.in-dock .lab-sub {
+  margin: 14px 0 8px;
+}
+.in-dock .lab-sw {
+  width: calc(25% - 8px);
+  min-width: 68px;
+}
+.in-dock .nv-presets {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 767px) {
+  .ld-wrap {
+    grid-template-columns: 62px minmax(0, 1fr);
+  }
+  .ld-tl {
+    font-size: 10.5px;
+  }
+}

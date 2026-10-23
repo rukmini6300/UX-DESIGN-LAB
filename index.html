@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title> ERP · Design System</title>
+<!-- Multi-file build for development. "node build.js" bundles it into dist/lab5.html. -->
+
+<!-- Boot: runs before first paint -->
+<script src="src/boot/embed-mode.js"></script>
+<meta name="theme-color" content="#F7F8FA">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap">
+<script src="src/boot/theme-engine.js"></script>
+<script src="src/boot/design-lab-engine.js"></script>
+
+<!-- Styles -->
+<link rel="stylesheet" href="src/styles/tokens.css">
+<link rel="stylesheet" href="src/styles/reset.css">
+<link rel="stylesheet" href="src/styles/shell.css">
+<link rel="stylesheet" href="src/styles/components.css">
+<link rel="stylesheet" href="src/styles/responsive.css">
+<link rel="stylesheet" href="src/styles/navigation-layouts.css">
+<link rel="stylesheet" href="src/styles/appearance-panel.css">
+<link rel="stylesheet" href="src/styles/design-lab.css">
+<link rel="stylesheet" href="src/styles/mobile.css">
+<link rel="stylesheet" href="src/styles/navbar.css">
+<link rel="stylesheet" href="src/styles/component-pages.css">
+<link rel="stylesheet" href="src/styles/module-toggle.css">
+</head>
+<body>
+<div class="app" id="app">
+  <header class="header" id="header">
+    <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open navigation"></button>
+    <div class="brand">
+      <a href="#/components" class="row" aria-label="Kagami ERP home" style="gap:10px">
+        <span class="logo-mark"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M9.5 7.5v13M9.5 14.5l7.5-7M12.6 11.6l5.4 8.9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 7.5v13" stroke="currentColor" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <span class="brand-name"> ERP <span>Inventory</span></span>
+      </a>
+    </div>
+    <button class="icon-btn desktop-only" id="collapseBtn" aria-label="Collapse sidebar" data-tip-always="Toggle sidebar  ["></button>
+    <div class="hdr-search" id="hdrSearch">
+      <span id="hdrSearchIco"></span>
+      <input id="globalSearch" type="search" placeholder="Search SKUs, products, documents" autocomplete="off" aria-label="Global search">
+      <span class="kbd">/</span>
+      <div class="search-pop" id="searchPop" role="listbox"></div>
+    </div>
+    <div class="hdr-spacer"></div>
+    <div class="hdr-actions">
+      <button class="inv-toggle" id="invToggle" type="button" role="switch" aria-checked="false" aria-label="Inventory workflow" data-tip="Show or hide the inventory workflow"><span class="sw" aria-hidden="true"></span><span class="inv-toggle-label">Inventory workflow</span></button>
+      <button class="icon-btn mobile-only" id="mobileSearchBtn" aria-label="Search"></button>
+      <button class="btn btn-primary btn-sm desktop-only" id="quickCreateBtn" aria-haspopup="menu"></button>
+      <button class="icon-btn" id="notifBtn" aria-label="Notifications" aria-haspopup="true"></button>
+      <button class="icon-btn desktop-only" id="helpBtn" aria-label="Help and shortcuts"></button>
+      <button class="icon-btn" id="appearanceBtn" aria-label="Appearance settings" aria-haspopup="dialog"></button>
+      <button class="btn btn-sm" id="designBtn" aria-label="Design system builder"></button>
+      <button class="icon-btn" id="labBtn" aria-label="Design lab sidebar" aria-controls="labDock" aria-expanded="false"></button>
+      <button class="icon-btn" id="deviceBtn" aria-label="Device preview"></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme"></button>
+      <button class="user-btn" id="userBtn" aria-haspopup="menu" aria-label="Account menu">
+        <span class="avatar">AM</span>
+        <span class="user-meta"><b>Alex Morgan</b><small>Inventory Manager</small></span>
+        <span class="desktop-only" id="userCaret"></span>
+      </button>
+    </div>
+  </header>
+  <nav class="sidebar" id="sidebar" aria-label="Main navigation"></nav>
+  <div class="overlay" id="overlay"></div>
+  <main class="main" id="main" tabindex="-1"><div class="page" id="page"></div></main>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div class="tip" id="tip"></div>
+<aside class="lab-dock" id="labDock" aria-label="Design lab options" hidden></aside>
+
+<!-- app:start  (load order matters: each file may use what the files above it define) -->
+<script src="src/core/app-context.js"></script>
+<script src="src/core/icons.js"></script>
+<script src="src/core/utils.js"></script>
+<script src="src/core/session.js"></script>
+<script src="src/ui/badge.js"></script>
+<script src="src/ui/toast.js"></script>
+<script src="src/ui/modal.js"></script>
+<script src="src/ui/drawer.js"></script>
+<script src="src/ui/menu.js"></script>
+<script src="src/ui/form.js"></script>
+<script src="src/ui/data-table.js"></script>
+<script src="src/ui/charts.js"></script>
+<script src="src/ui/stepper.js"></script>
+<script src="src/shell/navigation.js"></script>
+<script src="src/modules/inventory/manifest.js"></script>
+<script src="src/shell/module-loader.js"></script>
+<script src="src/shell/appearance.js"></script>
+<script src="src/shell/header.js"></script>
+<script src="src/shell/router.js"></script>
+<script src="src/shell/feature-modules.js"></script>
+<script src="src/modules/html-import/manifest.js"></script>
+<script src="src/design/data/lab-css.js"></script>
+<script src="src/design/data/component-catalog.js"></script>
+<script src="src/design/settings-panel.js"></script>
+<script src="src/design/form-layouts.js"></script>
+<script src="src/design/device-preview.js"></script>
+<script src="src/design/lab-dock.js"></script>
+<script src="src/design/components.js"></script>
+<script src="src/design/builder.js"></script>
+<script src="src/design/export.js"></script>
+<script src="src/design/styleguide.js"></script>
+<script src="src/design/formats.js"></script>
+<script src="src/design/routes.js"></script>
+<script src="src/shell/init.js"></script>
+<!-- app:end -->
+</body>
+</html>

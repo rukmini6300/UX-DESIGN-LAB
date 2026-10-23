@@ -1,0 +1,332 @@
+/* =========================================================================
+   COMPONENT PAGES
+   Components menu pages and the design builder.
+   ========================================================================= */
+
+.nav-sub-h {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--nv-sub-text, var(--text-subtle));
+  opacity: 0.8;
+  padding: 10px 10px 2px;
+}
+.menu.menu-tall {
+  max-height: min(72vh, 560px);
+  overflow: auto;
+}
+.menu.menu-tall .menu-item[disabled] {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  min-height: 26px;
+}
+.cmp-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.cmp-ctl {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.cmp-ctl .select {
+  min-width: 150px;
+  width: auto;
+}
+.cmp-sum {
+  margin-bottom: 16px;
+}
+.cmp-sum > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.cmp-sum > summary::-webkit-details-marker {
+  display: none;
+}
+.cmp-dims {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.cmp-dim-h {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.cmp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.cmp-chip {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.cmp-stage {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+.cmp-frame {
+  display: block;
+  width: 100%;
+  height: max(720px, calc(100vh - 220px));
+  border: 0;
+  background: transparent;
+}
+.cmp-load {
+  position: absolute;
+  inset: 0 0 auto 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 16px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.cmp-load[hidden] {
+  display: none;
+}
+.cmp-note {
+  margin-top: 10px;
+  font-size: 12px;
+}
+.cmp-gh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 650;
+  margin: 20px 0 10px;
+}
+.cmp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+.cmp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+}
+.cmp-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+.cmp-card b {
+  font-size: 14px;
+}
+.cmp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+#designBtn {
+  gap: 6px;
+}
+.dn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.dn-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+.dn-tab:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.dn-tab.on {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+.dn-count {
+  margin-left: auto;
+  font-size: 13px;
+}
+.dn-split {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.dn-list {
+  position: sticky;
+  top: 0;
+  max-height: calc(100vh - var(--hh) - 40px);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  padding: 8px;
+}
+.dn-gh {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  padding: 10px 8px 4px;
+}
+.dn-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--r);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+}
+.dn-item:hover {
+  background: var(--surface-hover);
+}
+.dn-item.on {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  font-weight: 600;
+}
+.dn-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.dn-sec {
+  margin-bottom: 16px;
+}
+.dn-sec:last-child {
+  margin-bottom: 0;
+}
+.dn-sec h3 {
+  font-size: 13px;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+.dn-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dn-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 3px 12px 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+.dn-chip i {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+}
+.dn-chip:hover {
+  background: var(--surface-hover);
+}
+.dn-chip[aria-pressed='true'] {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+.dn-chip[aria-pressed='true'] i {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+.dn-frame {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 0;
+  background: transparent;
+}
+.dn-stage {
+  border: 0;
+  border-radius: 0;
+}
+.dn-gh2 {
+  margin: 20px 0 8px;
+}
+.dn-comp {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.dn-comp > header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.dn-comp > header h3 {
+  font-size: 15px;
+  font-weight: 650;
+}
+.dn-comp > header .link {
+  margin-left: auto;
+  font-size: 13px;
+}
+@media (max-width: 900px) {
+  .dn-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dn-list {
+    position: static;
+    max-height: 260px;
+  }
+}

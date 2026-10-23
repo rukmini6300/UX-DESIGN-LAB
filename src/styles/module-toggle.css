@@ -1,0 +1,66 @@
+/* =========================================================================
+   MODULE TOGGLE
+   Inventory workflow switch in the header; design tools hidden in a
+   downloaded workflow app.
+   ========================================================================= */
+
+/* Inventory workflow toggle (header) */
+.inv-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 10px;
+  margin-right: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+.inv-toggle:hover {
+  border-color: var(--border-strong);
+}
+.inv-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+.inv-toggle:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.inv-toggle .sw {
+  margin-top: 0;
+}
+.inv-toggle[aria-checked='true'] {
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+.inv-toggle[aria-checked='true'] .sw {
+  background: var(--primary-grad);
+}
+.inv-toggle[aria-checked='true'] .sw::after {
+  transform: translateX(14px);
+}
+@media (max-width: 1100px) {
+  .inv-toggle-label {
+    display: none;
+  }
+  .inv-toggle {
+    padding: 0 8px;
+  }
+}
+/* Downloaded workflow app: design tools are left out */
+html[data-export] #invToggle,
+html[data-export] #designBtn,
+html[data-export] #labBtn,
+html[data-export] #deviceBtn,
+html[data-export] #appearanceBtn,
+html[data-export] .lab-dock {
+  display: none !important;
+}

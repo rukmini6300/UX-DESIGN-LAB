@@ -1,0 +1,137 @@
+/* =========================================================================
+   NAVIGATION LAYOUTS
+   Brand accents and the left / right / top / bottom navigation positions
+   (data-nav on <html>).
+   ========================================================================= */
+
+/* ============ BRAND ACCENTS ============ */
+.logo-mark {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--primary-grad);
+  color: var(--on-primary);
+  flex-shrink: 0;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--primary-grad);
+  pointer-events: none;
+}
+
+/* ============ NAVIGATION LAYOUTS (data-nav on <html>) ============ */
+:root[data-nav='right'] .app {
+  grid-template-columns: minmax(0, 1fr) var(--sbw);
+  grid-template-areas: 'header header' 'main sidebar';
+}
+:root[data-nav='right'] .sidebar {
+  border-right: 0;
+  border-left: 1px solid var(--border);
+}
+:root[data-nav='right'] .brand,
+:root[data-nav='top'] .brand,
+:root[data-nav='bottom'] .brand {
+  min-width: auto;
+  margin-right: 8px;
+}
+:root[data-nav='top'] .app,
+:root[data-nav='bottom'] .app {
+  grid-template-columns: minmax(0, 1fr);
+}
+:root[data-nav='top'] .app {
+  grid-template-rows: var(--hh) auto minmax(0, 1fr);
+  grid-template-areas: 'header' 'sidebar' 'main';
+}
+:root[data-nav='bottom'] .app {
+  grid-template-rows: var(--hh) minmax(0, 1fr) auto;
+  grid-template-areas: 'header' 'main' 'sidebar';
+}
+:root[data-nav='top'] .sidebar,
+:root[data-nav='bottom'] .sidebar {
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 12px;
+  border-right: 0;
+  scrollbar-width: none;
+}
+:root[data-nav='top'] .sidebar::-webkit-scrollbar,
+:root[data-nav='bottom'] .sidebar::-webkit-scrollbar {
+  display: none;
+}
+:root[data-nav='top'] .sidebar {
+  border-bottom: 1px solid var(--border);
+}
+:root[data-nav='bottom'] .sidebar {
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 12px -6px rgba(16, 24, 40, 0.1);
+}
+:root[data-nav='top'] #collapseBtn,
+:root[data-nav='bottom'] #collapseBtn,
+:root[data-nav='top'] #mobileMenuBtn,
+:root[data-nav='bottom'] #mobileMenuBtn {
+  display: none !important;
+}
+:root[data-nav='bottom'] .toasts {
+  bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+}
+.hn-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 11px;
+  border-radius: var(--r);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    background 0.12s,
+    color 0.12s;
+}
+.hn-item:hover,
+.hn-item[aria-expanded='true'] {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.hn-item .i {
+  color: var(--text-subtle);
+}
+.hn-item.active {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+.hn-item.active .i {
+  color: var(--primary-text);
+}
+.hn-caret {
+  display: flex;
+  margin-left: -2px;
+  opacity: 0.75;
+}
+.hn-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+.hn-tag {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  padding: 0 4px;
+  flex-shrink: 0;
+}
